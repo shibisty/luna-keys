@@ -1,0 +1,5 @@
+gtr_modules/
+go.mod
+go.work
+go.work.sum
+coverage.out

@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/shibisty/gtr/main/schema/gtr.schema.json",
+    "name": "luna-keys",
+    "version": "0.1.0",
+    "description": "Luna API keys: scopes, key format, the dashboard's introspection protocol and the RequireKey middleware for Luna services. Standard library only.",
+    "license": "MIT",
+    "repository": "github:shibisty/luna-keys",
+    "engines": {
+        "go": ">=1.22"
+    },
+    "scripts": {
+        "test": "go test ./..."
+    }
+}
