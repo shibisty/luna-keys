@@ -2,7 +2,7 @@
 
 The shared definition of a Luna API key, used by every Luna service:
 
-- **Scopes**: `auth:login`, `auth:users.read`, `auth:users.write`, `pages:read`, `pages:write`
+- **Scopes**: `auth:login`, `auth:users.read`, `auth:users.write`, `auth:data.read`, `auth:data.write`, `pages:read`, `pages:write`
   (`keys.Scopes()` is the catalogue for forms; `ParseScopes`, `CheckScopes`).
 - **Key format**: `sk_live_…` server keys (secret, any scope) and `pk_live_…` browser keys
   (public, allowed origins only, `auth:login` only) — the prefix, `_` and 32 random bytes in

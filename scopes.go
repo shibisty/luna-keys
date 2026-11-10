@@ -26,6 +26,11 @@ const (
 	AuthUsersRead Scope = "auth:users.read"
 	// AuthUsersWrite lets a server change and delete the application's users.
 	AuthUsersWrite Scope = "auth:users.write"
+	// AuthDataRead lets a server read the application's data about its
+	// users (luna-auth's per-user key-value store).
+	AuthDataRead Scope = "auth:data.read"
+	// AuthDataWrite lets a server set and delete that data.
+	AuthDataWrite Scope = "auth:data.write"
 	// PagesRead lets a client read the application's pages.
 	PagesRead Scope = "pages:read"
 	// PagesWrite lets a server create, change and delete pages.
@@ -44,6 +49,8 @@ var catalogue = []ScopeInfo{
 	{AuthLogin, "auth", "Register, log in and log out users, reset passwords", true},
 	{AuthUsersRead, "auth", "List and read users", false},
 	{AuthUsersWrite, "auth", "Change and delete users", false},
+	{AuthDataRead, "auth", "Read the users' data", false},
+	{AuthDataWrite, "auth", "Set and delete the users' data", false},
 	{PagesRead, "pages", "Read pages", false},
 	{PagesWrite, "pages", "Create, change and delete pages", false},
 }

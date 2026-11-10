@@ -76,7 +76,7 @@ func TestScopes(t *testing.T) {
 	if err := CheckScopes(Server, nil); err == nil {
 		t.Fatal("key without scopes")
 	}
-	if len(Scopes()) != 5 {
+	if len(Scopes()) != 7 {
 		t.Fatalf("catalogue: %v", Scopes())
 	}
 }
