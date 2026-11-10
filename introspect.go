@@ -32,6 +32,9 @@ type Key struct {
 	Scopes  []Scope  `json:"scopes"`
 	Origins []string `json:"origins,omitempty"` // allowed Origin values, e.g. https://app.example
 	IPs     []string `json:"ips,omitempty"`     // allowed client networks (CIDRs or addresses); empty: any
+	// PasswordResetURL is where the application's password reset emails
+	// link to ("" when the developer has not set it).
+	PasswordResetURL string `json:"password_reset_url,omitempty"`
 }
 
 // Has reports whether the key grants every scope.

@@ -11,7 +11,9 @@ The shared definition of a Luna API key, used by every Luna service:
 - **Introspection**: luna-dashboard mounts `keys.Handler(lookup, serviceTokens...)` at
   `keys.IntrospectPath` (`/internal/v1/keys/introspect`, internal network only); services ask it
   with `keys.NewClient(url, token)`, which sends the key's hash (never the key) and keeps answers
-  for 60 s (unknown keys 10 s), so a revoked key stops working within a minute.
+  for 60 s (unknown keys 10 s), so a revoked key stops working within a minute. The answer
+  (`keys.Key`) carries the application's id and name, the key's kind, scopes, origins, networks and
+  the application's password reset URL.
 - **Middleware**: `keys.RequireKey(verifier, scopes...)` accepts a request with a valid key in
   `X-API-Key` (the `Authorization` header stays free for the end user's token), checks the kind
   (a server key sent with an `Origin` is refused), the allowed origins and networks, and the
