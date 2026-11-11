@@ -20,7 +20,7 @@ type Scope string
 // The scopes of Luna services.
 const (
 	// AuthLogin lets a client register, log in and log out end users and
-	// reset their passwords. It is the only scope a browser key may hold.
+	// reset their passwords. A browser key may hold it.
 	AuthLogin Scope = "auth:login"
 	// AuthUsersRead lets a server list and read the application's users.
 	AuthUsersRead Scope = "auth:users.read"
@@ -31,7 +31,8 @@ const (
 	AuthDataRead Scope = "auth:data.read"
 	// AuthDataWrite lets a server set and delete that data.
 	AuthDataWrite Scope = "auth:data.write"
-	// PagesRead lets a client read the application's pages.
+	// PagesRead lets a client read the application's published pages. A
+	// browser key may hold it: published content is public.
 	PagesRead Scope = "pages:read"
 	// PagesWrite lets a server create, change and delete pages.
 	PagesWrite Scope = "pages:write"
@@ -51,7 +52,7 @@ var catalogue = []ScopeInfo{
 	{AuthUsersWrite, "auth", "Change and delete users", false},
 	{AuthDataRead, "auth", "Read the users' data", false},
 	{AuthDataWrite, "auth", "Set and delete the users' data", false},
-	{PagesRead, "pages", "Read pages", false},
+	{PagesRead, "pages", "Read published pages", true},
 	{PagesWrite, "pages", "Create, change and delete pages", false},
 }
 

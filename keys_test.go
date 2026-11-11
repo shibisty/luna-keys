@@ -70,6 +70,12 @@ func TestScopes(t *testing.T) {
 	if err := CheckScopes(Browser, []Scope{AuthLogin, AuthUsersRead}); err == nil {
 		t.Fatal("browser key with a server scope")
 	}
+	if err := CheckScopes(Browser, []Scope{AuthLogin, PagesRead}); err != nil {
+		t.Fatal(err) // published pages are public
+	}
+	if err := CheckScopes(Browser, []Scope{PagesWrite}); err == nil {
+		t.Fatal("browser key with pages:write")
+	}
 	if err := CheckScopes(Server, []Scope{AuthUsersWrite, PagesWrite}); err != nil {
 		t.Fatal(err)
 	}
