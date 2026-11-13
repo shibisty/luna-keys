@@ -2,10 +2,10 @@
 
 The shared definition of a Luna API key, used by every Luna service:
 
-- **Scopes**: `auth:login`, `auth:users.read`, `auth:users.write`, `auth:data.read`, `auth:data.write`, `pages:read`, `pages:write`
+- **Scopes**: `auth:login`, `auth:users.read`, `auth:users.write`, `auth:data.read`, `auth:data.write`, `pages:read`, `pages:write`, `files:read`, `files:write`
   (`keys.Scopes()` is the catalogue for forms; `ParseScopes`, `CheckScopes`).
 - **Key format**: `sk_live_…` server keys (secret, any scope) and `pk_live_…` browser keys
-  (public, allowed origins only, `auth:login` and `pages:read` only) — the prefix, `_` and 32 random bytes in
+  (public, allowed origins only, `auth:login`, `pages:read` and `files:read` only) — the prefix, `_` and 32 random bytes in
   unpadded base64url, as passport-apikey makes them. Only the hex SHA-256 (`keys.Hash`) is
   stored; `keys.Hint` is what may be shown later (`sk_live_…Q9xF`).
 - **Introspection**: luna-dashboard mounts `keys.Handler(lookup, serviceTokens...)` at

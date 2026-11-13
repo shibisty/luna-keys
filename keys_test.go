@@ -76,13 +76,22 @@ func TestScopes(t *testing.T) {
 	if err := CheckScopes(Browser, []Scope{PagesWrite}); err == nil {
 		t.Fatal("browser key with pages:write")
 	}
-	if err := CheckScopes(Server, []Scope{AuthUsersWrite, PagesWrite}); err != nil {
+	if err := CheckScopes(Browser, []Scope{PagesRead, FilesRead}); err != nil {
+		t.Fatal(err) // public files are public
+	}
+	if err := CheckScopes(Browser, []Scope{FilesWrite}); err == nil {
+		t.Fatal("browser key with files:write")
+	}
+	if got, err := ParseScopes([]string{"files:read", "files:write"}); err != nil || len(got) != 2 {
+		t.Fatalf("ParseScopes(files) = %v, %v", got, err)
+	}
+	if err := CheckScopes(Server, []Scope{AuthUsersWrite, PagesWrite, FilesWrite}); err != nil {
 		t.Fatal(err)
 	}
 	if err := CheckScopes(Server, nil); err == nil {
 		t.Fatal("key without scopes")
 	}
-	if len(Scopes()) != 7 {
+	if len(Scopes()) != 9 {
 		t.Fatalf("catalogue: %v", Scopes())
 	}
 }
