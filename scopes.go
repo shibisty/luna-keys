@@ -41,12 +41,16 @@ const (
 	FilesRead Scope = "files:read"
 	// FilesWrite lets a server upload, change and delete files.
 	FilesWrite Scope = "files:write"
+	// FormsRead lets a server read the forms and what visitors sent.
+	FormsRead Scope = "forms:read"
+	// FormsWrite lets a server change forms and delete submissions.
+	FormsWrite Scope = "forms:write"
 )
 
 // ScopeInfo describes a scope for the dashboard's forms.
 type ScopeInfo struct {
 	Scope       Scope
-	Service     string // auth, pages, files
+	Service     string // auth, pages, files, forms
 	Description string
 	Browser     bool // may be held by a browser key
 }
@@ -61,6 +65,8 @@ var catalogue = []ScopeInfo{
 	{PagesWrite, "pages", "Create, change and delete pages", false},
 	{FilesRead, "files", "List and read files (browser keys: public files only)", true},
 	{FilesWrite, "files", "Upload, change and delete files", false},
+	{FormsRead, "forms", "Read forms and their submissions", false},
+	{FormsWrite, "forms", "Change forms, delete submissions", false},
 }
 
 // Scopes is the catalogue of every scope, in display order.

@@ -82,6 +82,11 @@ func TestScopes(t *testing.T) {
 	if err := CheckScopes(Browser, []Scope{FilesWrite}); err == nil {
 		t.Fatal("browser key with files:write")
 	}
+	for _, s := range []Scope{FormsRead, FormsWrite} {
+		if err := CheckScopes(Browser, []Scope{s}); err == nil {
+			t.Fatalf("browser key with %s", s) // submissions are personal data
+		}
+	}
 	if got, err := ParseScopes([]string{"files:read", "files:write"}); err != nil || len(got) != 2 {
 		t.Fatalf("ParseScopes(files) = %v, %v", got, err)
 	}
@@ -91,7 +96,7 @@ func TestScopes(t *testing.T) {
 	if err := CheckScopes(Server, nil); err == nil {
 		t.Fatal("key without scopes")
 	}
-	if len(Scopes()) != 9 {
+	if len(Scopes()) != 11 {
 		t.Fatalf("catalogue: %v", Scopes())
 	}
 }
